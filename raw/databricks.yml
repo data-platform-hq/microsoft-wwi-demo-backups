@@ -32,9 +32,9 @@ artifacts:
     path: .
 
 # For passing wheel package to workspace
-#sync:
-#  include:
-#    - ./dist/*.whl
+sync:
+  include:
+    - ./dist/*.whl
 
 resources:
   jobs:
@@ -59,7 +59,9 @@ resources:
               availability: SPOT_WITH_FALLBACK
               zone_id: us-east-1a
               spot_bid_price_percent: 100
-              ebs_volume_count: 0
+              ebs_volume_count: 2
+              ebs_volume_type: GENERAL_PURPOSE_SSD
+              ebs_volume_size: 100
             spark_conf:
               spark.databricks.delta.preview.enabled: "true"
             spark_env_vars:
@@ -86,6 +88,7 @@ resources:
               load_datetime: "2015-01-01T00:00:00"
               streaming_consumer_group: $Default
           libraries:
-            #- whl: Workspace/${workspace.root_path}/files/dist/raw_microsoft_wwi-1.4.0-py3-none-any.whl
+            - whl: ${workspace.root_path}/files/dist/raw_microsoft_wwi-1.4.0-py3-none-any.whl
+            #- whl: /Workspace/Shared/Oleh_Mykolaishyn@epam.com/.bundle/raw_bundle/dev/artifacts/.internal/raw_microsoft_wwi-1.4.0-py3-none-any.whl
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
