@@ -1,0 +1,86 @@
+# The main job for {{ dab_name }}
+bundle:
+  name: {{ dab_name }}
+
+workspace:
+  root_path: /bundles/{{ dab_name }}
+
+variables:
+  DATABRICKS_HOST:
+    default: BUNDLE_VAR_DATABRICKS_HOST
+
+resources:
+  jobs:
+    {{ job_name }}:
+      name: {{ job_name }}
+
+      access_control_list:
+        - user_name: 7f6dced2-39f0-45ca-8956-86b1fe30ed5e
+          permission_level: "IS_OWNER"
+        - group_name: admins
+          permission_level: "CAN_MANAGE"
+        - group_name: users
+          permission_level: "CAN_MANAGE_RUN"
+
+###TODO: parameterize as current user
+      # email_notifications:
+      #     on_failure: 
+      #     - "oleh_zemskov@epam.com"
+
+      notification_settings:
+        no_alert_for_skipped_runs: true
+        webhook_notifications: {}
+        max_concurrent_runs: 1
+        timeout_seconds: 0
+
+      schedule:
+        quartz_cron_expression: "50 0 0 1 * ?"
+        timezone_id: "Europe/Kiev"
+        pause_status: "PAUSED"
+
+      job_clusters:
+        - job_cluster_key: job-cluster
+          new_cluster:
+            node_type_id: Standard_DS3_v2
+            spark_version: 13.3.x-scala2.12
+            spark_conf:
+              spark.databricks.delta.preview.enabled: "true"
+            azure_attributes:
+              first_on_demand: 1
+              availability: SPOT_WITH_FALLBACK_AZURE
+              spot_bid_max_price: -1
+            spark_env_vars:
+              PYSPARK_PYTHON: /databricks/python3/bin/python3
+            enable_elastic_disk: true
+            data_security_mode: SINGLE_USER
+            autoscale:
+              min_workers: 1
+              max_workers: 5
+
+      tasks:
+        - task_key: {{ task_name }}
+          job_cluster_key: job-cluster
+          notebook_task:
+            notebook_path: {{ notebook_path }}
+          base_parameters:
+              catalog: main
+              streaming_source: eventhubs
+              is_e2e: "False"
+              load_mode: incremental
+              schema: raw_microsoft_wwi
+              load_datetime: "2015-01-01T00:00:00"
+              streaming_consumer_group: $Default
+          libraries:
+            - whl: /Workspace/${workspace.file_path}/{{ artifact_name }} #TODO: parameterize lib name
+            - maven:
+                coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
+          timeout_seconds: 0
+          email_notifications: {}
+          notification_settings:
+            no_alert_for_skipped_runs: false
+            no_alert_for_canceled_runs: false
+            alert_on_last_attempt: false
+
+targets:
+  {{ adb_env }}:
+    host: ${var.DATABRICKS_HOST}

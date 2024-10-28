@@ -1,0 +1,31 @@
+SELECT CountryID,
+        CountryName,
+        FormalName,
+        IsoAlpha3Code,
+        IsoNumericCode,
+        CountryType,
+        LatestRecordedPopulation,
+        Continent,
+        Region,
+        Subregion,
+        CAST(Border AS varchar(MAX)) AS Border,
+        LastEditedBy,
+        ValidFrom,
+        ValidTo
+    FROM Application.Countries
+UNION
+SELECT CountryID,
+        CountryName,
+        FormalName,
+        IsoAlpha3Code,
+        IsoNumericCode,
+        CountryType,
+        LatestRecordedPopulation,
+        Continent,
+        Region,
+        Subregion,
+        CAST(Border AS varchar(MAX)) AS Border,
+        LastEditedBy,
+        ValidFrom,
+        ValidTo
+    FROM Application.Countries_Archive

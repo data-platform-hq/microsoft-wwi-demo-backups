@@ -1,0 +1,51 @@
+{
+  "fields": [
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "SupplierCategoryID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "SupplierCategoryName",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "LastEditedBy",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 7
+      },
+      "name": "ValidFrom",
+      "nullable": true,
+      "type": "timestamp"
+    },
+    {
+      "metadata": {
+        "scale": 7
+      },
+      "name": "ValidTo",
+      "nullable": true,
+      "type": "timestamp"
+    },
+    {
+      "metadata": {},
+      "name": "LoadDatetime",
+      "nullable": false,
+      "type": "timestamp"
+    }
+  ],
+  "type": "struct"
+}

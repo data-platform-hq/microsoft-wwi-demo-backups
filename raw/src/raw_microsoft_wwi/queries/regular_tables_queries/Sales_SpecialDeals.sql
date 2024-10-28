@@ -1,0 +1,15 @@
+SELECT SpecialDealID,
+            StockItemID,
+            CustomerID,
+            BuyingGroupID,
+            CustomerCategoryID,
+            StockGroupID,
+            DealDescription,
+            StartDate,
+            EndDate,
+            DiscountAmount,
+            DiscountPercentage,
+            UnitPrice,
+            LastEditedBy,
+            LastEditedWhen
+      FROM Sales.SpecialDeals

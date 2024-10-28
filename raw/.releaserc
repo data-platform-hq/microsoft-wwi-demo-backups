@@ -1,0 +1,62 @@
+{
+    "branches": [
+        "main"
+    ],
+    "tagFormat": "${version}",
+    "debug": "true",
+    "plugins": [
+        [
+            "@semantic-release/commit-analyzer",
+            {
+                "parserOpts": {
+                    "mergePattern": "^Merged PR (\\d+): (\\w*)(?:\\(([\\w\\$\\.\\-\\* ]*)\\))?\\: (.*)$",
+                    "mergeCorrespondence": [
+                        "id",
+                        "type",
+                        "scope",
+                        "subject"
+                    ],
+                    "headerPattern": "undefined",
+                    "headerCorrespondence": []
+                }
+            }
+        ],
+        [
+            "@semantic-release/release-notes-generator",
+            {
+                "parserOpts": {
+                    "mergePattern": "^Merged PR (\\d+): (\\w*)(?:\\(([\\w\\$\\.\\-\\* ]*)\\))?\\: (.*)$",
+                    "mergeCorrespondence": [
+                        "id",
+                        "type",
+                        "scope",
+                        "subject"
+                    ]
+                }
+            }
+        ],
+        [
+            "@semantic-release/changelog",
+            {
+                "changelogFile": "CHANGELOG.md",
+                "changelogTitle": "# Semantic Versioning Changelog"
+            }
+        ],
+        [
+            "@semantic-release/git",
+            {
+                "assets": [
+                    "CHANGELOG.md"
+                ]
+            }
+        ],
+        [
+            "semantic-release-ado",
+            {
+                "varName": "version",
+                "setOnlyOnRelease": true,
+                "isOutput": true
+            }
+        ]
+    ]
+}

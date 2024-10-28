@@ -1,0 +1,91 @@
+# This is a Databricks asset bundle definition
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: raw_bundle
+
+#variables:
+#  jobs_cluster_id:
+#    default: 1234-5678-90123456789
+#    description: Cluster id for jobs
+#  name_prefix:
+#    default: dummy_prefix
+#    description: Unique prefix for your resources
+#  env_name:
+#    default: dev
+#    description: Environment name
+
+workspace:
+  root_path:  /Shared/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+
+# Do we need targets? Make sense to leave for future modifications
+targets:
+  dev:
+    default: true
+    workspace:
+      host: https://dbc-065c43be-ebbe.cloud.databricks.com
+
+# Need to specify when wheel package is not pre-built, otherwise comment this block
+artifacts:
+  default:
+    type: whl
+    build: poetry build
+    path: .
+
+# For passing wheel package to workspace
+#sync:
+#  include:
+#    - ./dist/*.whl
+
+resources:
+  jobs:
+    wwi_demo_raw:
+      name: wwi_demo_raw
+
+      #access_control_list:
+      #  - user_name: 7f6dced2-39f0-45ca-8956-86b1fe30ed5e
+      #    permission_level: "IS_OWNER"
+      #  - group_name: admins
+      #    permission_level: "CAN_MANAGE"
+      #  - group_name: users
+      #    permission_level: "CAN_MANAGE_RUN"
+
+      job_clusters:
+        - job_cluster_key: job-cluster
+          new_cluster:
+            node_type_id: m4.xlarge
+            spark_version: 14.3.x-scala2.12
+            aws_attributes:
+              first_on_demand: 1
+              availability: SPOT_WITH_FALLBACK
+              zone_id: us-east-1a
+              spot_bid_price_percent: 100
+              ebs_volume_count: 0
+            spark_conf:
+              spark.databricks.delta.preview.enabled: "true"
+            spark_env_vars:
+              PYSPARK_PYTHON: /databricks/python3/bin/python3
+            enable_elastic_disk: false
+            data_security_mode: SINGLE_USER
+            autoscale:
+              min_workers: 2
+              max_workers: 3
+
+      tasks:
+        - task_key: raw
+          job_cluster_key: job-cluster
+          notebook_task:
+            notebook_path: ${workspace.root_path}/files/databricks-notebooks/raw-microsoft-wwi/raw-microsoft-wwi
+            source: WORKSPACE
+            #notebook_path: ${workspace.root_path}/files/notebooks/silver/data_ingester_fsr_silver
+            base_parameters:
+              catalog: demo
+              streaming_source: eventhubs
+              is_e2e: "False"
+              load_mode: incremental
+              schema: raw_microsoft_wwi
+              load_datetime: "2015-01-01T00:00:00"
+              streaming_consumer_group: $Default
+          libraries:
+            - whl: Workspace/${workspace.root_path}/files/dist/raw_microsoft_wwi-1.4.0-py3-none-any.whl
+            - maven:
+                coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
