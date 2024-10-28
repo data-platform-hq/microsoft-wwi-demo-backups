@@ -37,10 +37,10 @@ jobs:
 
       # Deploy the bundle to the "qa" target as defined
       # in the bundle's settings file.
-      #- name: Deploy
-      #  run: databricks bundle deploy
-      #  working-directory: ./${{ github.event.inputs.projectFolders }}/
-      #  env:
-      #    DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-      #    DATABRICKS_BUNDLE_ENV: dev
+      - name: Deploy
+        run: cd ./raw && databricks bundle deploy
+        #working-directory: ./${{ github.event.inputs.projectFolders }}/
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
 
