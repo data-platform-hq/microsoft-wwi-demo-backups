@@ -1,0 +1,41 @@
+name: 'Build and Deploy to Databricks'
+
+on:
+    workflow_dispatch:
+      inputs:
+        projectFolders:
+          description: 'List of folders to run'
+          required: true
+          type: choice
+          options:
+            - 01_raw
+            - 02_data_product
+     
+jobs:
+  deploy:
+    name: "Build and Deploy Bundle"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: pip install poetry
+
+      # Download the Databricks CLI.
+      # See https://github.com/databricks/setup-cli
+      - uses: databricks/setup-cli@main
+
+      - run: databricks bundle validate
+        working-directory: ./${{ github.event.inputs.projectFolders }}/
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
+
+      # Deploy the bundle to the "qa" target as defined
+      # in the bundle's settings file.
+      - run: databricks bundle deploy
+        working-directory: ./${{ github.event.inputs.projectFolders }}/
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
+
