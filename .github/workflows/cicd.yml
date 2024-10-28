@@ -25,7 +25,11 @@ jobs:
       # See https://github.com/databricks/setup-cli
       - uses: databricks/setup-cli@main
 
-      - run: databricks bundle validate
+      - name: Validation
+        run: |
+          pwd
+          ls -la
+          databricks bundle validate
         working-directory: ./${{ github.event.inputs.projectFolders }}/
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
@@ -33,7 +37,8 @@ jobs:
 
       # Deploy the bundle to the "qa" target as defined
       # in the bundle's settings file.
-      - run: databricks bundle deploy
+      - name: Deploy
+        run: databricks bundle deploy
         working-directory: ./${{ github.event.inputs.projectFolders }}/
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
