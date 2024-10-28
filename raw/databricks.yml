@@ -76,7 +76,7 @@ resources:
         - task_key: raw
           job_cluster_key: job-cluster
           notebook_task:
-            notebook_path: ${workspace.root_path}/files/databricks-notebooks/raw-microsoft-wwi/raw-microsoft-wwi
+            notebook_path: ${workspace.root_path}/files/bundle/databricks-notebooks/raw-microsoft-wwi/raw-microsoft-wwi
             source: WORKSPACE
             #notebook_path: ${workspace.root_path}/files/notebooks/silver/data_ingester_fsr_silver
             base_parameters:
