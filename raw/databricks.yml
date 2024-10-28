@@ -86,6 +86,6 @@ resources:
               load_datetime: "2015-01-01T00:00:00"
               streaming_consumer_group: $Default
           libraries:
-            - whl: Workspace/${workspace.root_path}/files/dist/raw_microsoft_wwi-1.4.0-py3-none-any.whl
+            #- whl: Workspace/${workspace.root_path}/files/dist/raw_microsoft_wwi-1.4.0-py3-none-any.whl
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
