@@ -64,7 +64,7 @@ jobs:
           ls -la
           databricks bundle validate
         #working-directory: ./${{ github.event.inputs.projectFolders }}/
-        working-directory: 02_data_product #./${{ github.event.inputs.projectFolders }}/
+        working-directory: data_product #./${{ github.event.inputs.projectFolders }}/
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
@@ -74,7 +74,7 @@ jobs:
       - name: Deploy
         run: databricks bundle deploy -c 1011-082929-h6d1tk5
         #working-directory: ./${{ github.event.inputs.projectFolders }}/
-        working-directory: 02_data_product #./${{ github.event.inputs.projectFolders }}/
+        working-directory: data_product #./${{ github.event.inputs.projectFolders }}/
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
