@@ -109,7 +109,7 @@ if load_mode == 'debezium':
         raise ValueError(f"Unsupported streaming_source value: {streaming_source}")
 elif load_mode == 'incremental': 
     db_url = dbutils.secrets.get(scope="external", key="wwi-demo-server-url")
-    db_username = "SA"
+    db_username = dbutils.secrets.get(scope="external", key="wwi-demo-server-admin-username")
     db_password = dbutils.secrets.get(scope="external", key="wwi-demo-server-admin-login-password")
     e2e_expected_data_delta_path = f'{dbutils.secrets.get(scope="external", key="e2e-expected-data-path")}/raw' if run_mode == "e2e_test" else ""
 

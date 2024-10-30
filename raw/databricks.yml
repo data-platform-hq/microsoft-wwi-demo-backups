@@ -42,13 +42,9 @@ resources:
     wwi_demo_raw:
       name: wwi_demo_raw
 
-      #access_control_list:
-      #  - user_name: 7f6dced2-39f0-45ca-8956-86b1fe30ed5e
-      #    permission_level: "IS_OWNER"
-      #  - group_name: admins
-      #    permission_level: "CAN_MANAGE"
-      #  - group_name: users
-      #    permission_level: "CAN_MANAGE_RUN"
+      access_control_list:
+        - group_name: users
+          permission_level: "CAN_MANAGE_RUN"
 
       job_clusters:
         - job_cluster_key: job-cluster
