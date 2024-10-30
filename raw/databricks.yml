@@ -3,6 +3,10 @@
 bundle:
   name: raw_bundle
 
+permissions:
+  - permission_level: "CAN_MANAGE_RUN"
+    group_name: users
+
 #variables:
 #  jobs_cluster_id:
 #    default: 1234-5678-90123456789
@@ -42,9 +46,6 @@ resources:
     wwi_demo_raw:
       name: wwi_demo_raw
 
-      access_control_list:
-        - group_name: users
-          permission_level: "CAN_MANAGE_RUN"
 
       job_clusters:
         - job_cluster_key: job-cluster
