@@ -19,7 +19,7 @@ permissions:
 #    description: Environment name
 
 workspace:
-  root_path:  /Shared/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+  root_path:  /Shared/${workspace.current_user.userName}/${bundle.name}/${bundle.target}
 
 # Do we need targets? Make sense to leave for future modifications
 targets:
