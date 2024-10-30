@@ -6,8 +6,6 @@ bundle:
 permissions:
   - level: "CAN_MANAGE"
     group_name: users
-  - level: "CAN_MANAGE"
-    group_name: admins
 
 #variables:
 #  jobs_cluster_id:
@@ -47,7 +45,6 @@ resources:
   jobs:
     wwi_demo_raw:
       name: wwi_demo_raw
-
 
       job_clusters:
         - job_cluster_key: job-cluster
@@ -89,6 +86,5 @@ resources:
               streaming_consumer_group: $Default
           libraries:
             - whl: ${workspace.root_path}/files/dist/raw_microsoft_wwi-1.4.0-py3-none-any.whl
-            #- whl: /Workspace/Shared/Oleh_Mykolaishyn@epam.com/.bundle/raw_bundle/dev/artifacts/.internal/raw_microsoft_wwi-1.4.0-py3-none-any.whl
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
