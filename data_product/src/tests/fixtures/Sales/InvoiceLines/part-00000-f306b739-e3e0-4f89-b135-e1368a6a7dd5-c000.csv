@@ -1,0 +1,101 @@
+InvoiceLineID	InvoiceID	StockItemID	Description	PackageTypeID	Quantity	UnitPrice	TaxRate	TaxAmount	LineProfit	ExtendedPrice	LastEditedBy	LastEditedWhen	LoadDatetime
+1	1	67	Ride on toy sedan car (Black) 1/12 scale	7	10	230.00	15.000	345.00	850.00	2645.00	7	2013-01-01T12:00:00.000+02:00	2014
+2	2	50	Developer joke mug - old C developers never die (White)	7	9	13.00	15.000	17.55	76.50	134.55	7	2013-01-01T12:00:00.000+02:00	2014
+3	2	10	USB food flash drive - chocolate bar	7	9	32.00	15.000	43.20	180.00	331.20	7	2013-01-01T12:00:00.000+02:00	2014
+4	3	114	Superhero action jacket (Blue) XXL	7	3	30.00	15.000	13.50	24.00	103.50	7	2013-01-01T12:00:00.000+02:00	2014
+5	4	206	Permanent marker black 5mm nib (Black) 5mm	7	96	2.70	15.000	38.88	96.00	298.08	7	2013-01-01T12:00:00.000+02:00	2014
+6	4	130	Furry gorilla with big eyes slippers (Black) S	7	5	32.00	15.000	24.00	120.00	184.00	7	2013-01-01T12:00:00.000+02:00	2014
+7	4	50	Developer joke mug - old C developers never die (White)	7	2	13.00	15.000	3.90	17.00	29.90	7	2013-01-01T12:00:00.000+02:00	2014
+8	5	128	Plush shark slippers (Gray) L	7	4	32.00	15.000	19.20	96.00	147.20	7	2013-01-01T12:00:00.000+02:00	2014
+9	5	121	Dinosaur battery-powered slippers (Green) XL	7	3	32.00	15.000	14.40	70.50	110.40	7	2013-01-01T12:00:00.000+02:00	2014
+10	5	155	Large sized bubblewrap roll 50m	7	20	24.00	15.000	72.00	220.00	552.00	7	2013-01-01T12:00:00.000+02:00	2014
+11	6	150	Pack of 12 action figures (variety)	9	4	16.00	15.000	9.60	42.00	73.60	7	2013-01-01T12:00:00.000+02:00	2014
+12	6	40	Developer joke mug - (hip, hip, array) (White)	7	6	13.00	15.000	11.70	51.00	89.70	7	2013-01-01T12:00:00.000+02:00	2014
+13	6	126	Plush shark slippers (Gray) S	7	9	32.00	15.000	43.20	216.00	331.20	7	2013-01-01T12:00:00.000+02:00	2014
+14	7	39	Developer joke mug - inheritance is the OO way to become wealthy (Black)	7	9	13.00	15.000	17.55	76.50	134.55	7	2013-01-01T12:00:00.000+02:00	2014
+15	7	184	Shipping carton (Brown) 305x305x305mm	7	75	3.50	15.000	39.38	120.00	301.88	7	2013-01-01T12:00:00.000+02:00	2014
+16	7	9	USB food flash drive - banana	7	6	32.00	15.000	28.80	120.00	220.80	7	2013-01-01T12:00:00.000+02:00	2014
+17	7	132	Furry gorilla with big eyes slippers (Black) L	7	1	32.00	15.000	4.80	24.00	36.80	7	2013-01-01T12:00:00.000+02:00	2014
+18	8	9	USB food flash drive - banana	7	4	32.00	15.000	19.20	80.00	147.20	7	2013-01-01T12:00:00.000+02:00	2014
+19	8	32	Developer joke mug - that's a hardware problem (White)	7	9	13.00	15.000	17.55	76.50	134.55	7	2013-01-01T12:00:00.000+02:00	2014
+20	8	50	Developer joke mug - old C developers never die (White)	7	1	13.00	15.000	1.95	8.50	14.95	7	2013-01-01T12:00:00.000+02:00	2014
+21	9	58	RC toy sedan car with remote control (Black) 1/50 scale	7	2	25.00	15.000	7.50	25.00	57.50	7	2013-01-01T12:00:00.000+02:00	2014
+22	9	134	Animal with big feet slippers (Brown) S	7	4	32.00	15.000	19.20	96.00	147.20	7	2013-01-01T12:00:00.000+02:00	2014
+23	10	38	Developer joke mug - inheritance is the OO way to become wealthy (White)	7	5	13.00	15.000	9.75	42.50	74.75	7	2013-01-01T12:00:00.000+02:00	2014
+24	10	34	Developer joke mug - fun was unexpected at this time (White)	7	3	13.00	15.000	5.85	25.50	44.85	7	2013-01-01T12:00:00.000+02:00	2014
+25	11	45	Developer joke mug - there are 10 types of people in the world (Black)	7	1	13.00	15.000	1.95	8.50	14.95	7	2013-01-01T12:00:00.000+02:00	2014
+26	12	62	RC toy sedan car with remote control (Yellow) 1/50 scale	7	5	25.00	15.000	18.75	62.50	143.75	7	2013-01-01T12:00:00.000+02:00	2014
+27	12	44	Developer joke mug - there are 10 types of people in the world (White)	7	8	13.00	15.000	15.60	68.00	119.60	7	2013-01-01T12:00:00.000+02:00	2014
+28	13	156	10 mm Double sided bubble wrap 10m	7	10	15.00	15.000	22.50	75.00	172.50	7	2013-01-01T12:00:00.000+02:00	2014
+29	13	73	Ride on vintage American toy coupe (Red) 1/12 scale	7	8	285.00	15.000	342.00	1040.00	2622.00	7	2013-01-01T12:00:00.000+02:00	2014
+30	14	111	Superhero action jacket (Blue) M	7	4	30.00	15.000	18.00	32.00	138.00	7	2013-01-01T12:00:00.000+02:00	2014
+31	14	163	32 mm Double sided bubble wrap 20m	7	10	37.00	15.000	55.50	230.00	425.50	7	2013-01-01T12:00:00.000+02:00	2014
+32	14	132	Furry gorilla with big eyes slippers (Black) L	7	5	32.00	15.000	24.00	120.00	184.00	7	2013-01-01T12:00:00.000+02:00	2014
+33	15	108	Superhero action jacket (Blue) XXS	7	6	25.00	15.000	22.50	36.00	172.50	7	2013-01-01T12:00:00.000+02:00	2014
+34	15	210	Packing knife with metal insert blade (Yellow) 18mm	7	10	2.40	15.000	3.60	12.00	27.60	7	2013-01-01T12:00:00.000+02:00	2014
+35	16	115	Superhero action jacket (Blue) 3XL	7	2	34.00	15.000	10.20	20.00	78.20	7	2013-01-01T12:00:00.000+02:00	2014
+36	17	133	Furry gorilla with big eyes slippers (Black) XL	7	10	32.00	15.000	48.00	235.00	368.00	7	2013-01-01T12:00:00.000+02:00	2014
+37	17	47	Developer joke mug - a foo walks into a bar (Black)	7	8	13.00	15.000	15.60	68.00	119.60	7	2013-01-01T12:00:00.000+02:00	2014
+38	18	22	DBA joke mug - it depends (White)	7	7	13.00	15.000	13.65	59.50	104.65	7	2013-01-01T12:00:00.000+02:00	2014
+39	19	15	USB food flash drive - dessert 10 drive variety pack	9	8	240.00	15.000	288.00	1212.00	2208.00	7	2013-01-01T12:00:00.000+02:00	2014
+40	19	75	Ride on big wheel monster truck (Black) 1/12 scale	7	1	345.00	15.000	51.75	140.00	396.75	7	2013-01-01T12:00:00.000+02:00	2014
+41	19	68	Ride on toy sedan car (Red) 1/12 scale	7	4	230.00	15.000	138.00	340.00	1058.00	7	2013-01-01T12:00:00.000+02:00	2014
+42	20	111	Superhero action jacket (Blue) M	7	8	30.00	15.000	36.00	64.00	276.00	7	2013-01-01T12:00:00.000+02:00	2014
+43	21	144	Halloween zombie mask (Light Brown) L	7	24	18.00	15.000	64.80	-24.00	496.80	7	2013-01-01T12:00:00.000+02:00	2014
+44	21	121	Dinosaur battery-powered slippers (Green) XL	7	2	32.00	15.000	9.60	47.00	73.60	7	2013-01-01T12:00:00.000+02:00	2014
+45	21	54	IT joke mug - that behavior is by design (White)	7	3	13.00	15.000	5.85	25.50	44.85	7	2013-01-01T12:00:00.000+02:00	2014
+46	22	128	Plush shark slippers (Gray) L	7	1	32.00	15.000	4.80	24.00	36.80	7	2013-01-01T12:00:00.000+02:00	2014
+47	22	158	10 mm Double sided bubble wrap 50m	7	30	105.00	15.000	472.50	1470.00	3622.50	7	2013-01-01T12:00:00.000+02:00	2014
+48	23	21	DBA joke mug - you might be a DBA if (Black)	7	4	13.00	15.000	7.80	34.00	59.80	7	2013-01-01T12:00:00.000+02:00	2014
+49	23	69	Ride on toy sedan car (Blue) 1/12 scale	7	5	230.00	15.000	172.50	425.00	1322.50	7	2013-01-01T12:00:00.000+02:00	2014
+50	23	137	Animal with big feet slippers (Brown) XL	7	9	32.00	15.000	43.20	211.50	331.20	7	2013-01-01T12:00:00.000+02:00	2014
+51	24	70	Ride on toy sedan car (Green) 1/12 scale	7	2	230.00	15.000	69.00	170.00	529.00	7	2013-01-01T12:00:00.000+02:00	2014
+52	24	210	Packing knife with metal insert blade (Yellow) 18mm	7	5	2.40	15.000	1.80	6.00	13.80	7	2013-01-01T12:00:00.000+02:00	2014
+53	25	35	Developer joke mug - fun was unexpected at this time (Black)	7	5	13.00	15.000	9.75	42.50	74.75	7	2013-01-01T12:00:00.000+02:00	2014
+54	25	14	USB food flash drive - fortune cookie	7	2	32.00	15.000	9.60	40.00	73.60	7	2013-01-01T12:00:00.000+02:00	2014
+55	26	42	Developer joke mug - understanding recursion requires understanding recursion (White)	7	1	13.00	15.000	1.95	8.50	14.95	7	2013-01-01T12:00:00.000+02:00	2014
+56	27	121	Dinosaur battery-powered slippers (Green) XL	7	9	32.00	15.000	43.20	211.50	331.20	7	2013-01-01T12:00:00.000+02:00	2014
+57	27	48	Developer joke mug - this code was generated by a tool (White)	7	1	13.00	15.000	1.95	8.50	14.95	7	2013-01-01T12:00:00.000+02:00	2014
+58	28	147	Halloween skull mask (Gray) M	7	12	18.00	15.000	32.40	36.00	248.40	7	2013-01-01T12:00:00.000+02:00	2014
+59	28	33	Developer joke mug - that's a hardware problem (Black)	7	4	13.00	15.000	7.80	34.00	59.80	7	2013-01-01T12:00:00.000+02:00	2014
+60	28	170	20 mm Anti static bubble wrap (Blue) 50m	7	40	102.00	15.000	612.00	1880.00	4692.00	7	2013-01-01T12:00:00.000+02:00	2014
+61	29	125	Ogre battery-powered slippers (Green) XL	7	4	32.00	15.000	19.20	94.00	147.20	7	2013-01-01T12:00:00.000+02:00	2014
+62	29	104	Alien officer hoodie (Black) 3XL	7	7	35.00	15.000	36.75	126.00	281.75	7	2013-01-01T12:00:00.000+02:00	2014
+63	30	60	RC toy sedan car with remote control (Blue) 1/50 scale	7	4	25.00	15.000	15.00	50.00	115.00	7	2013-01-01T12:00:00.000+02:00	2014
+64	31	44	Developer joke mug - there are 10 types of people in the world (White)	7	5	13.00	15.000	9.75	42.50	74.75	7	2013-01-01T12:00:00.000+02:00	2014
+65	31	213	Air cushion film 200mmx100mm 325m	7	7	87.00	15.000	91.35	364.00	700.35	7	2013-01-01T12:00:00.000+02:00	2014
+66	31	61	RC toy sedan car with remote control (Green) 1/50 scale	7	3	25.00	15.000	11.25	37.50	86.25	7	2013-01-01T12:00:00.000+02:00	2014
+67	32	66	RC big wheel monster truck with remote control (Black) 1/50 scale	7	8	45.00	15.000	54.00	236.00	414.00	7	2013-01-01T12:00:00.000+02:00	2014
+68	32	63	RC toy sedan car with remote control (Pink) 1/50 scale	7	4	25.00	15.000	15.00	50.00	115.00	7	2013-01-01T12:00:00.000+02:00	2014
+69	32	125	Ogre battery-powered slippers (Green) XL	7	10	32.00	15.000	48.00	235.00	368.00	7	2013-01-01T12:00:00.000+02:00	2014
+70	33	207	Permanent marker blue 5mm nib (Blue) 5mm	7	12	2.70	15.000	4.86	12.00	37.26	7	2013-01-01T12:00:00.000+02:00	2014
+71	34	168	20 mm Anti static bubble wrap (Blue) 10m	7	10	29.00	15.000	43.50	170.00	333.50	7	2013-01-01T12:00:00.000+02:00	2014
+72	34	123	Ogre battery-powered slippers (Green) M	7	9	32.00	15.000	43.20	216.00	331.20	7	2013-01-01T12:00:00.000+02:00	2014
+73	34	2	USB rocket launcher (Gray)	7	8	25.00	15.000	30.00	124.00	230.00	7	2013-01-01T12:00:00.000+02:00	2014
+74	34	27	DBA joke mug - SELECT caffeine FROM mug (Black)	7	1	13.00	15.000	1.95	8.50	14.95	7	2013-01-01T12:00:00.000+02:00	2014
+75	34	5	USB food flash drive - hamburger	7	1	32.00	15.000	4.80	20.00	36.80	7	2013-01-01T12:00:00.000+02:00	2014
+76	35	60	RC toy sedan car with remote control (Blue) 1/50 scale	7	8	25.00	15.000	30.00	100.00	230.00	7	2013-01-01T12:00:00.000+02:00	2014
+77	36	133	Furry gorilla with big eyes slippers (Black) XL	7	1	32.00	15.000	4.80	23.50	36.80	7	2013-01-01T12:00:00.000+02:00	2014
+78	36	35	Developer joke mug - fun was unexpected at this time (Black)	7	10	13.00	15.000	19.50	85.00	149.50	7	2013-01-01T12:00:00.000+02:00	2014
+79	36	134	Animal with big feet slippers (Brown) S	7	4	32.00	15.000	19.20	96.00	147.20	7	2013-01-01T12:00:00.000+02:00	2014
+80	36	120	Dinosaur battery-powered slippers (Green) L	7	6	32.00	15.000	28.80	144.00	220.80	7	2013-01-01T12:00:00.000+02:00	2014
+81	37	35	Developer joke mug - fun was unexpected at this time (Black)	7	10	13.00	15.000	19.50	85.00	149.50	7	2013-01-01T12:00:00.000+02:00	2014
+82	38	57	IT joke mug - hardware: part of the computer that can be kicked (Black)	7	2	13.00	15.000	3.90	17.00	29.90	7	2013-01-01T12:00:00.000+02:00	2014
+83	39	51	Developer joke mug - old C developers never die (Black)	7	7	13.00	15.000	13.65	59.50	104.65	7	2013-01-01T12:00:00.000+02:00	2014
+84	39	43	Developer joke mug - understanding recursion requires understanding recursion (Black)	7	3	13.00	15.000	5.85	25.50	44.85	7	2013-01-01T12:00:00.000+02:00	2014
+85	39	15	USB food flash drive - dessert 10 drive variety pack	9	1	240.00	15.000	36.00	151.50	276.00	7	2013-01-01T12:00:00.000+02:00	2014
+86	40	66	RC big wheel monster truck with remote control (Black) 1/50 scale	7	8	45.00	15.000	54.00	236.00	414.00	7	2013-01-01T12:00:00.000+02:00	2014
+87	40	120	Dinosaur battery-powered slippers (Green) L	7	9	32.00	15.000	43.20	216.00	331.20	7	2013-01-01T12:00:00.000+02:00	2014
+88	41	112	Superhero action jacket (Blue) L	7	3	30.00	15.000	13.50	24.00	103.50	7	2013-01-01T12:00:00.000+02:00	2014
+89	41	214	Air cushion film 200mmx200mm 325m	7	2	90.00	15.000	27.00	72.00	207.00	7	2013-01-01T12:00:00.000+02:00	2014
+90	42	115	Superhero action jacket (Blue) 3XL	7	6	34.00	15.000	30.60	60.00	234.60	9	2013-01-02T12:00:00.000+02:00	2014
+91	42	40	Developer joke mug - (hip, hip, array) (White)	7	10	13.00	15.000	19.50	85.00	149.50	9	2013-01-02T12:00:00.000+02:00	2014
+92	42	162	32 mm Double sided bubble wrap 10m	7	100	22.00	15.000	330.00	1210.00	2530.00	9	2013-01-02T12:00:00.000+02:00	2014
+93	43	94	"\"The Gu\" red shirt XML tag t-shirt (Black) L"	7	24	18.00	15.000	64.80	264.00	496.80	9	2013-01-02T12:00:00.000+02:00	2014
+94	43	110	Superhero action jacket (Blue) S	7	2	25.00	15.000	7.50	12.00	57.50	9	2013-01-02T12:00:00.000+02:00	2014
+95	44	71	Ride on toy sedan car (Yellow) 1/12 scale	7	10	230.00	15.000	345.00	850.00	2645.00	9	2013-01-02T12:00:00.000+02:00	2014
+96	44	182	Shipping carton (Brown) 457x279x279mm	7	200	1.28	15.000	38.40	136.00	294.40	9	2013-01-02T12:00:00.000+02:00	2014
+97	45	164	32 mm Double sided bubble wrap 50m	7	50	112.00	15.000	840.00	2650.00	6440.00	9	2013-01-02T12:00:00.000+02:00	2014
+98	46	89	"\"The Gu\" red shirt XML tag t-shirt (Black) 3XS"	7	72	18.00	15.000	194.40	792.00	1490.40	9	2013-01-02T12:00:00.000+02:00	2014
+99	46	171	32 mm Anti static bubble wrap (Blue) 10m	7	90	32.00	15.000	432.00	1440.00	3312.00	9	2013-01-02T12:00:00.000+02:00	2014
+100	47	167	10 mm Anti static bubble wrap (Blue) 50m	7	50	99.00	15.000	742.50	2700.00	5692.50	9	2013-01-02T12:00:00.000+02:00	2014

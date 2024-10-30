@@ -1,0 +1,63 @@
+{
+  "name": "data-product-microsoft-wwi",
+  "schedule": {
+    "quartz_cron_expression": "12 0 10 * * ?",
+    "timezone_id": "Europe/Kyiv",
+    "pause_status": "UNPAUSED"
+  },
+  "max_concurrent_runs": 1,
+  "notebook_task": {
+    "notebook_path": "/notebooks/data-product-microsoft-wwi/data-product-microsoft-wwi",
+    "base_parameters": {
+      "is_e2e": "False",
+      "catalog": "main",
+      "source_tables_schema": "raw_microsoft_wwi"
+    },
+    "source": "WORKSPACE"
+  },
+  "new_cluster": {
+    "cluster_name": "",
+    "spark_version": "13.1.x-scala2.12",
+    "azure_attributes": {
+      "first_on_demand": 1,
+      "availability": "SPOT_WITH_FALLBACK_AZURE",
+      "spot_bid_max_price": -1
+    },
+    "node_type_id": "Standard_DS3_v2",
+    "spark_env_vars": {
+      "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+    },
+    "cluster_log_conf": {
+      "dbfs": {
+        "destination": "dbfs:/mnt/dpaf2-data/cluster-logs/data-product-microsoft-wwi"
+        }
+    },
+    "enable_elastic_disk": true,
+    "autoscale": {
+      "min_workers": 1,
+      "max_workers": 5
+    }
+  },
+  "libraries": [
+    {
+      "whl": "path_to_whl_lib"
+    },
+    {
+      "maven": {
+        "coordinates": "com.microsoft.azure:spark-mssql-connector_2.12:1.2.0"
+      }
+    },
+    {
+      "maven": {
+        "coordinates": "com.microsoft.sqlserver:mssql-jdbc:11.2.1.jre18"
+      }
+    }
+  ],
+  "timeout_seconds": 0,
+  "access_control_list": [
+    {
+      "group_name": "users",
+      "permission_level": "CAN_MANAGE_RUN"
+    }
+  ]
+}

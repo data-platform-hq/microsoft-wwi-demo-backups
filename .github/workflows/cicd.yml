@@ -9,7 +9,7 @@ on:
           type: choice
           options:
             - raw
-            - 02_data_product
+            - data_product
      
 jobs:
   deploy_raw:
