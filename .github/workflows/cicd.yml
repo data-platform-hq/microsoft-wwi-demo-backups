@@ -29,8 +29,8 @@ jobs:
         run: |
           pwd
           ls -la
-          cd ./raw && databricks bundle validate
-        #working-directory: ./01_raw #./${{ github.event.inputs.projectFolders }}/
+          databricks bundle validate
+        working-directory: ./raw #./${{ github.event.inputs.projectFolders }}/
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
