@@ -1,7 +1,7 @@
 # This is a Databricks asset bundle definition
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
-  name: 02_data_product_bundle
+  name: data_product_bundle
 
 permissions:
   - level: "CAN_MANAGE"
@@ -84,6 +84,6 @@ resources:
               load_datetime: "2015-01-01T00:00:00"
               streaming_consumer_group: $Default
           libraries:
-            - whl: ${workspace.root_path}/files/dist/data_product_microsoft_wwi"1.6.0-py3-none-any.whl
+            - whl: ${workspace.root_path}/files/dist/data_product_microsoft_wwi-1.6.0-py3-none-any.whl
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
