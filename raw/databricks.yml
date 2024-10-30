@@ -6,6 +6,8 @@ bundle:
 permissions:
   - level: "CAN_MANAGE"
     group_name: users
+  - level: "CAN_MANAGE"
+    group_name: admins
 
 #variables:
 #  jobs_cluster_id:
@@ -78,7 +80,7 @@ resources:
             source: WORKSPACE
             #notebook_path: ${workspace.root_path}/files/notebooks/silver/data_ingester_fsr_silver
             base_parameters:
-              catalog: demo
+              catalog: wwi_demo
               streaming_source: eventhubs
               is_e2e: "False"
               load_mode: incremental
