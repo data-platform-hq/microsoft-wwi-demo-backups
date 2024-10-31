@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "data_product_wwi"
+name = "data_product_microsoft_wwi"
 version = "1.6.0"
 description = "Data product WWI Microsoft loader"
 authors = []

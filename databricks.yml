@@ -71,7 +71,6 @@ resources:
             source: WORKSPACE
             base_parameters:
               catalog: wwi_demo
-              source_tables_schema: raw_microsoft_wwi
               #streaming_source: eventhubs
               is_e2e: "False"
               load_mode: incremental
@@ -90,11 +89,6 @@ resources:
             base_parameters:
               catalog: wwi_demo
               source_tables_schema: raw_microsoft_wwi
-              #streaming_source: eventhubs
-              is_e2e: "False"
-              load_mode: incremental
-              load_datetime: "2015-01-01T00:00:00"
-              streaming_consumer_group: $Default
           libraries:
             - whl: ${workspace.root_path}/files/dist/data_product_microsoft_wwi-1.6.0-py3-none-any.whl
             #- maven:
