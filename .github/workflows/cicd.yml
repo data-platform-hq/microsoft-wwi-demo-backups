@@ -72,7 +72,10 @@ jobs:
       # Deploy the bundle to the "qa" target as defined
       # in the bundle's settings file.
       - name: Deploy
-        run: databricks bundle deploy -c 1011-082929-h6d1tk5
+        run: |
+          databricks bundle deploy -c 1011-082929-h6d1tk5
+          ls -la
+          cd ./dist && ls -la
         #working-directory: ./${{ github.event.inputs.projectFolders }}/
         working-directory: data_product #./${{ github.event.inputs.projectFolders }}/
         env:
