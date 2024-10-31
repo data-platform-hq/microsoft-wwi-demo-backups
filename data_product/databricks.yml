@@ -31,7 +31,7 @@ targets:
 
 # Need to specify when wheel package is not pre-built, otherwise comment this block
 artifacts:
-  default:
+  data_product:
     type: whl
     build: poetry build
     path: .
