@@ -14,7 +14,7 @@ on:
 jobs:
   # RAW
   
-  deploy_raw:
+  deploy:
     name: "Build and Deploy Bundle RAW"
     runs-on: ubuntu-latest
 
@@ -32,7 +32,7 @@ jobs:
           pwd
           ls -la
           databricks bundle validate
-        working-directory: raw #./${{ github.event.inputs.projectFolders }}/
+        #working-directory: raw #./${{ github.event.inputs.projectFolders }}/
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
@@ -42,47 +42,47 @@ jobs:
       - name: Deploy
         run: databricks bundle deploy -c 1011-082929-h6d1tk5
         #working-directory: ./${{ github.event.inputs.projectFolders }}/
-        working-directory: raw #./${{ github.event.inputs.projectFolders }}/
+        #working-directory: raw #./${{ github.event.inputs.projectFolders }}/
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
 
 
-  # Data Product
-  deploy_data_product:
-    name: "Build and Deploy Bundle Data Product"
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - run: pip install poetry
-
-      # Download the Databricks CLI.
-      # See https://github.com/databricks/setup-cli
-      - uses: databricks/setup-cli@main
-
-      - name: Validation 
-        run: |
-          pwd
-          ls -la
-          databricks bundle validate
-        #working-directory: ./${{ github.event.inputs.projectFolders }}/
-        working-directory: data_product #./${{ github.event.inputs.projectFolders }}/
-        env:
-          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: dev
-
-      # Deploy the bundle to the "qa" target as defined
-      # in the bundle's settings file.
-      - name: Deploy
-        run: |
-          databricks bundle deploy -c 1011-082929-h6d1tk5
-          ls -la
-          cd ./dist && ls -la
-        #working-directory: ./${{ github.event.inputs.projectFolders }}/
-        working-directory: data_product #./${{ github.event.inputs.projectFolders }}/
-        env:
-          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: dev
-
+          #  # Data Product
+          #  deploy_data_product:
+          #    name: "Build and Deploy Bundle Data Product"
+          #    runs-on: ubuntu-latest
+          #
+          #    steps:
+          #      - uses: actions/checkout@v4
+          #
+          #      - run: pip install poetry
+          #
+          #      # Download the Databricks CLI.
+          #      # See https://github.com/databricks/setup-cli
+          #      - uses: databricks/setup-cli@main
+          #
+          #      - name: Validation 
+          #        run: |
+          #          pwd
+          #          ls -la
+          #          databricks bundle validate
+          #        #working-directory: ./${{ github.event.inputs.projectFolders }}/
+          #        working-directory: data_product #./${{ github.event.inputs.projectFolders }}/
+          #        env:
+          #          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          #          DATABRICKS_BUNDLE_ENV: dev
+          #
+          #      # Deploy the bundle to the "qa" target as defined
+          #      # in the bundle's settings file.
+          #      - name: Deploy
+          #        run: |
+          #          databricks bundle deploy -c 1011-082929-h6d1tk5
+          #          ls -la
+          #          cd ./dist && ls -la
+          #        #working-directory: ./${{ github.event.inputs.projectFolders }}/
+          #        working-directory: data_product #./${{ github.event.inputs.projectFolders }}/
+          #        env:
+          #          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          #          DATABRICKS_BUNDLE_ENV: dev
+          #
