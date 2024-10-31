@@ -76,7 +76,7 @@ resources:
               load_datetime: "2015-01-01T00:00:00"
               streaming_consumer_group: $Default
           libraries:
-            - whl: ${workspace.root_path}/files/dist/raw_microsoft_wwi-1.4.0-py3-none-any.whl
+            - whl: ${workspace.root_path}/artifacts/.internal/raw_microsoft_wwi-1.4.0-py3-none-any.whl
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
 
@@ -91,6 +91,6 @@ resources:
               catalog: wwi_demo
               source_tables_schema: raw_microsoft_wwi
           libraries:
-            - whl: ${workspace.root_path}/files/dist/data_product_microsoft_wwi-1.6.0-py3-none-any.whl
+            - whl: ${workspace.root_path}/artifacts/.internal/data_product_microsoft_wwi-1.6.0-py3-none-any.whl
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0

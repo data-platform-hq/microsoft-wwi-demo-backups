@@ -2,18 +2,8 @@ name: 'Build and Deploy to Databricks'
 
 on:
     workflow_dispatch:
-      inputs:
-        projectFolders:
-          description: 'List of folders to run'
-          required: true
-          type: choice
-          options:
-            - raw
-            - data_product
-     
+
 jobs:
-  # RAW
-  
   deploy:
     name: "Build and Deploy Bundle RAW"
     runs-on: ubuntu-latest
