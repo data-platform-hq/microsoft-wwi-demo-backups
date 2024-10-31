@@ -1,11 +1,17 @@
-name: 'Build and Deploy to Databricks'
+name: 'Deploy Microsoft WWI packages to Databricks'
 
 on:
     workflow_dispatch:
+      inputs:
+        cluster_id:
+          description: 'Optionaly overwrite job cluster'
+          required: false
+          type: string
+          default: ''
 
 jobs:
   deploy:
-    name: "Build and Deploy Bundle RAW"
+    name: "Build and Deploy Bundle to the Workspaces"
     runs-on: ubuntu-latest
 
     steps:
@@ -19,18 +25,25 @@ jobs:
 
       - name: Validation 
         run: |
-          pwd
-          ls -la
           databricks bundle validate
-        #working-directory: raw #./${{ github.event.inputs.projectFolders }}/
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
 
       # Deploy the bundle to the "qa" target as defined
       # in the bundle's settings file.
-      - name: Deploy
-        run: databricks bundle deploy #-c 1011-082929-h6d1tk5
+      - name: Deploy with custom cluster
+        if: ${{ github.event.inputs.cluster_id != '' }}
+        run: |
+          databricks bundle deploy -c ${{ github.event.inputs.cluster_id }}
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
+
+      - name: Deploy with default cluster
+        if: ${{ github.event.inputs.cluster_id == '' }}
+        run: |
+          databricks bundle deploy
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
