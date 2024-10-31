@@ -72,6 +72,7 @@ resources:
             source: WORKSPACE
             base_parameters:
               catalog: wwi_demo
+              schema: raw_microsoft_wwi
               load_mode: incremental
               load_datetime: "2015-01-01T00:00:00"
               streaming_consumer_group: $Default
