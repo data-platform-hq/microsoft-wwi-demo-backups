@@ -68,7 +68,7 @@ resources:
         - task_key: raw
           job_cluster_key: microsoft_wwi_job_cluster
           notebook_task:
-            notebook_path: ${workspace.root_path}/files/bundle/databricks-notebooks/raw-microsoft-wwi/raw-microsoft-wwi
+            notebook_path: ${workspace.root_path}/files/raw/bundle/databricks-notebooks/raw-microsoft-wwi/raw-microsoft-wwi
             source: WORKSPACE
             base_parameters:
               catalog: wwi_demo
@@ -85,7 +85,7 @@ resources:
           depends_on:
             - task_key: raw
           notebook_task:
-            notebook_path: ${workspace.root_path}/files/bundle/databricks-notebooks/data-product-microsoft-wwi/data-product-microsoft-wwi
+            notebook_path: ${workspace.root_path}/files/data_product/bundle/databricks-notebooks/data-product-microsoft-wwi/data-product-microsoft-wwi
             source: WORKSPACE
             base_parameters:
               catalog: wwi_demo
