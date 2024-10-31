@@ -16,6 +16,7 @@ dbutils.widgets.text("load_datetime", "")
 dbutils.widgets.text("is_e2e", "False")
 dbutils.widgets.dropdown("destination", "delta", ["delta"])
 dbutils.widgets.text("catalog", "wwi_demo")
+dbutils.widgets.text("destination_schema", "02_data_product_microsoft_wwi")
 dbutils.widgets.text("source_tables_schema", "raw_microsoft_wwi")
 dbutils.widgets.text('raw_area_path', 'raw')
 dbutils.widgets.text('data_product_area_path', 'data_product')
@@ -47,7 +48,7 @@ else:
     print("Running in default node")
 
 DATABRICKS_SCHEMA = (
-    "data_product_microsoft_wwi" if not run_mode == "e2e_test" else
+    dbutils.widgets.get("destination_schema") if not run_mode == "e2e_test" else
     "data_product_microsoft_wwi_actual_e2e_v2"
 )
 LOGGING_LEVEL = "WARNING"

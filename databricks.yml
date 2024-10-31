@@ -72,7 +72,7 @@ resources:
             source: WORKSPACE
             base_parameters:
               catalog: wwi_demo
-              schema: raw_microsoft_wwi
+              schema: 01_raw_microsoft_wwi
               load_mode: incremental
               load_datetime: "2015-01-01T00:00:00"
               streaming_consumer_group: $Default
@@ -90,7 +90,8 @@ resources:
             source: WORKSPACE
             base_parameters:
               catalog: wwi_demo
-              source_tables_schema: raw_microsoft_wwi
+              source_tables_schema: 01_raw_microsoft_wwi
+              destination_schema: 02_data_product_microsoft_wwi
           libraries:
             - whl: ${workspace.root_path}/artifacts/.internal/data_product_microsoft_wwi-1.6.0-py3-none-any.whl
             - maven:
