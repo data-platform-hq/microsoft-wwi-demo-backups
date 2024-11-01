@@ -16,15 +16,15 @@ targets:
     default: true
     mode: development
     workspace:
-      host: https://dbc-065c43be-ebbe.cloud.databricks.com
+      host: https://dbc-fcedebf1-f5b8.cloud.databricks.com
 
 # Need to specify when wheel package is not pre-built, otherwise comment this block
 artifacts:
-  data_product:
+  raw:
     type: whl
     build: poetry build
     path: ./raw
-  raw:
+  data_product:
     type: whl
     build: poetry build
     path: ./data_product
