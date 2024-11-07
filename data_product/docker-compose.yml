@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+    epmadpafic:
+        build: .
+        container_name: ${COMPOSE_PROJECT_NAME}-mssql
+        ports:
+          - ${MSSQL_PORT}:1433
+        environment:
+            ACCEPT_EULA: "Y"
+            MSSQL_SA_PASSWORD: ${MSSQL_PASSWORD}
+        volumes:
+          - ./init_product_db.sql:/usr/sqlscripts/init_product_db.sql
+          - mssql:/var/opt/mssql
+volumes:
+  mssql:

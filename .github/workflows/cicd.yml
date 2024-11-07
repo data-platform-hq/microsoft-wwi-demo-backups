@@ -1,19 +1,17 @@
-name: 'Build and Deploy to Databricks'
+name: 'Deploy Microsoft WWI packages to Databricks'
 
 on:
     workflow_dispatch:
       inputs:
-        projectFolders:
-          description: 'List of folders to run'
-          required: true
-          type: choice
-          options:
-            - 01_raw
-            - 02_data_product
-     
+        cluster_id:
+          description: 'Optionaly overwrite job cluster'
+          required: false
+          type: string
+          default: ''
+
 jobs:
   deploy:
-    name: "Build and Deploy Bundle"
+    name: "Build and Deploy Bundle to the Workspaces"
     runs-on: ubuntu-latest
 
     steps:
@@ -25,17 +23,42 @@ jobs:
       # See https://github.com/databricks/setup-cli
       - uses: databricks/setup-cli@main
 
-      - run: databricks bundle validate
-        working-directory: ./${{ github.event.inputs.projectFolders }}/
-        env:
-          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: dev
+      - name: Configure demo auth profile
+        run: |
+          echo -e "[demo]\nhost=${{ secrets.DATABRICKS_HOST }}" > .databrickscfg
 
-      # Deploy the bundle to the "qa" target as defined
-      # in the bundle's settings file.
-      - run: databricks bundle deploy
-        working-directory: ./${{ github.event.inputs.projectFolders }}/
+      - name: Validation 
+        run: |
+          databricks auth env --host ${{ secrets.DATABRICKS_HOST }}
+          databricks bundle validate \
+            -p demo
         env:
-          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: dev
+          DATABRICKS_CONFIG_FILE: .databrickscfg
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: demo
+
+      # Deploy the bundle to the "demo" target as defined
+      # in the bundle's settings file.
+      - name: Deploy with custom cluster
+        if: ${{ github.event.inputs.cluster_id != '' }}
+        run: |
+          databricks bundle deploy \ 
+            -c ${{ github.event.inputs.cluster_id }} \
+            -p demo
+
+        env:
+          DATABRICKS_CONFIG_FILE: .databrickscfg
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: demo
+
+      - name: Deploy with default cluster
+        if: ${{ github.event.inputs.cluster_id == '' }}
+        run: |
+          databricks bundle deploy \
+            -p demo
+
+        env:
+          DATABRICKS_CONFIG_FILE: .databrickscfg
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: demo
 

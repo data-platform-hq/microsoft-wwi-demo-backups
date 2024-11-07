@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+    epmadpafic:
+        build: .
+        container_name: ${COMPOSE_PROJECT_NAME}-mssql
+        ports:
+          - ${MSSQL_PORT}:1433
+        environment:
+            ACCEPT_EULA: "Y"
+            MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+            MSSQL_AGENT_ENABLED: True
+        volumes:
+          - ./restore_db.sql:/usr/sqlscripts/restore_db.sql
+          - ./enable_cdc.sql:/usr/sqlscripts/enable_cdc.sql
+          - mssql:/var/opt/mssql
+          
+    zookeeper:
+      image: debezium/zookeeper:1.9
+      restart: always
+
+    kafka:
+      image: debezium/kafka:1.9
+      restart: always
+      ports:
+        - ${KAFKA_PORT}:9092
+      links:
+        - zookeeper
+      environment:
+        - ZOOKEEPER_CONNECT=zookeeper:2181
+        #- ADVERTISED_HOST_NAME=${KAFKA_HOSTNAME}
+
+    connect:
+      image: debezium/connect:1.9
+      restart: always
+      ports:
+        - ${KAFKA_CONNECT_PORT}:8083
+        - ${KAFKA_CONNECT_WORKER_PORT}:5005
+      links:
+        - kafka
+        - epmadpafic
+      environment:
+        - BOOTSTRAP_SERVERS=kafka:9092
+        - GROUP_ID=1
+        - CONFIG_STORAGE_TOPIC=debezium_configs
+        - OFFSET_STORAGE_TOPIC=debezium_offsets
+        - STATUS_STORAGE_TOPIC=debezium_connect_statuses
+        
+volumes:
+  mssql:

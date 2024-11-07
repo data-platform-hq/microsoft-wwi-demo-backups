@@ -1,0 +1,96 @@
+# This is a Databricks asset bundle definition
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: microsoft_wwi_demo
+
+permissions:
+  - level: "CAN_MANAGE"
+    group_name: users
+
+workspace:
+  root_path: /Shared/${workspace.current_user.userName}/${bundle.name}/${bundle.target}
+
+
+# Do we need targets? Make sense to leave for future modifications
+targets:
+  demo:
+    default: true
+
+# Need to specify when wheel package is not pre-built, otherwise comment this block
+artifacts:
+  raw:
+    type: whl
+    build: poetry build
+    path: ./raw
+  data_product:
+    type: whl
+    build: poetry build
+    path: ./data_product
+
+# For passing wheel package to workspace
+sync:
+  include:
+    - ./raw/dist/*.whl
+    - ./data_product/dist/*.whl
+
+resources:
+  jobs:
+    microsoft_wwi_demo:
+      name: microsoft_wwi_demo
+
+      job_clusters:
+        - job_cluster_key: microsoft_wwi_job_cluster
+          new_cluster:
+            node_type_id: m5d.2xlarge
+            spark_version: 14.3.x-scala2.12
+            aws_attributes:
+              first_on_demand: 1
+              availability: SPOT_WITH_FALLBACK
+              zone_id: auto
+              spot_bid_price_percent: 100
+              ebs_volume_count: 2
+              ebs_volume_type: GENERAL_PURPOSE_SSD
+              ebs_volume_size: 100
+            spark_conf:
+              spark.databricks.delta.preview.enabled: "true"
+            spark_env_vars:
+              PYSPARK_PYTHON: /databricks/python3/bin/python3
+            enable_elastic_disk: false
+            data_security_mode: SINGLE_USER
+            runtime_engine: PHOTON
+            autoscale:
+              min_workers: 1
+              max_workers: 3
+
+      tasks:
+        - task_key: raw
+          job_cluster_key: microsoft_wwi_job_cluster
+          notebook_task:
+            notebook_path: ${workspace.root_path}/files/raw/bundle/databricks-notebooks/raw-microsoft-wwi/raw-microsoft-wwi
+            source: WORKSPACE
+            base_parameters:
+              catalog: wwi_demo
+              schema: 01_raw_microsoft_wwi
+              load_mode: incremental
+              load_datetime: "2015-01-01T00:00:00"
+              streaming_consumer_group: $Default
+          libraries:
+            - whl: ${workspace.root_path}/artifacts/.internal/raw_microsoft_wwi-1.4.0-py3-none-any.whl
+            - maven:
+                coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
+
+        - task_key: data_product
+          job_cluster_key: microsoft_wwi_job_cluster
+          depends_on:
+            - task_key: raw
+          notebook_task:
+            notebook_path: ${workspace.root_path}/files/data_product/bundle/databricks-notebooks/data-product-microsoft-wwi/data-product-microsoft-wwi
+            source: WORKSPACE
+            base_parameters:
+              catalog: wwi_demo
+              source_tables_schema: 01_raw_microsoft_wwi
+              destination_schema: 02_data_product_microsoft_wwi
+          libraries:
+            - whl: ${workspace.root_path}/artifacts/.internal/data_product_microsoft_wwi-1.6.0-py3-none-any.whl
+            - maven:
+                coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
