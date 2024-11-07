@@ -1,0 +1,107 @@
+{
+  "fields": [
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PurchaseOrderLineID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PurchaseOrderID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "StockItemID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "OrderedOuters",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "Description",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "ReceivedOuters",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PackageTypeID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 2
+      },
+      "name": "ExpectedUnitPricePerOuter",
+      "nullable": true,
+      "type": "decimal(18,2)"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "LastReceiptDate",
+      "nullable": true,
+      "type": "date"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "IsOrderLineFinalized",
+      "nullable": true,
+      "type": "boolean"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "LastEditedBy",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 7
+      },
+      "name": "LastEditedWhen",
+      "nullable": true,
+      "type": "timestamp"
+    },
+    {
+      "metadata": {},
+      "name": "LoadDatetime",
+      "nullable": false,
+      "type": "timestamp"
+    }
+  ],
+  "type": "struct"
+}

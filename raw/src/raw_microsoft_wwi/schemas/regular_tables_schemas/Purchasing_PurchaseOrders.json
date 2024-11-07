@@ -1,0 +1,107 @@
+{
+  "fields": [
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PurchaseOrderID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "SupplierID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 7
+      },
+      "name": "OrderDate",
+      "nullable": true,
+      "type": "date"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "DeliveryMethodID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "ContactPersonID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 7
+      },
+      "name": "ExpectedDeliveryDate",
+      "nullable": true,
+      "type": "date"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "SupplierReference",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "IsOrderFinalized",
+      "nullable": true,
+      "type": "boolean"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "Comments",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "InternalComments",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "LastEditedBy",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 7
+      },
+      "name": "LastEditedWhen",
+      "nullable": true,
+      "type": "timestamp"
+    },
+    {
+      "metadata": {},
+      "name": "LoadDatetime",
+      "nullable": false,
+      "type": "timestamp"
+    }
+  ],
+  "type": "struct"
+}

@@ -1,0 +1,15 @@
+SELECT CustomerTransactionID,
+        CustomerID,
+        TransactionTypeID,
+        InvoiceID,
+        PaymentMethodID,
+        TransactionDate,
+        AmountExcludingTax,
+        TaxAmount,
+        TransactionAmount,
+        OutstandingBalance,
+        FinalizationDate,
+        IsFinalized,
+        LastEditedBy,
+        LastEditedWhen
+    FROM Sales.CustomerTransactions

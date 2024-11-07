@@ -1,0 +1,243 @@
+{
+  "fields": [
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "SupplierID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "SupplierName",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "SupplierCategoryID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PrimaryContactPersonID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "AlternateContactPersonID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "DeliveryMethodID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "DeliveryCityID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PostalCityID",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "SupplierReference",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "BankAccountName",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "BankAccountBranch",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "BankAccountCode",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "BankAccountNumber",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "BankInternationalCode",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PaymentDays",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "InternalComments",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PhoneNumber",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "FaxNumber",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "WebsiteURL",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "DeliveryAddressLine1",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "DeliveryAddressLine2",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "DeliveryPostalCode",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "DeliveryLocation",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PostalAddressLine1",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PostalAddressLine2",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "PostalPostalCode",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {
+        "scale": 0
+      },
+      "name": "LastEditedBy",
+      "nullable": true,
+      "type": "integer"
+    },
+    {
+      "metadata": {
+        "scale": 7
+      },
+      "name": "ValidFrom",
+      "nullable": true,
+      "type": "timestamp"
+    },
+    {
+      "metadata": {
+        "scale": 7
+      },
+      "name": "ValidTo",
+      "nullable": true,
+      "type": "timestamp"
+    },
+    {
+      "metadata": {},
+      "name": "LoadDatetime",
+      "nullable": false,
+      "type": "timestamp"
+    }
+  ],
+  "type": "struct"
+}

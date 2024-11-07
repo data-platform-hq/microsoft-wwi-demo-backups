@@ -1,0 +1,4 @@
+# Autoformatter friendly flake8 config (all formatting rules disabled)
+[flake8]
+#extend-ignore = E501
+ignore = E501, W504
