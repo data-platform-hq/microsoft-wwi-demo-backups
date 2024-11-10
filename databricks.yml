@@ -10,6 +10,11 @@ permissions:
 workspace:
   root_path: /Shared/${workspace.current_user.userName}/${bundle.name}/${bundle.target}
 
+variables:
+  dashboard_warehouse_id:
+    type: string
+    lookup:
+      warehouse: "Serverless Starter Warehouse"
 
 # Do we need targets? Make sense to leave for future modifications
 targets:
@@ -95,9 +100,8 @@ resources:
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
 
-  resources:
-    dashboards:
-      microsoft_wwi:
-        display_name: "Microsoft WWI2"
-        #warehouse_id: 346590a98076fe70
-        file_path: ../src/microsoft_wwi.lvdash.json
+  dashboards:
+    microsoft_wwi:
+      display_name: "Microsoft WWI"
+      warehouse_id: ${var.dashboard_warehouse_id}
+      file_path: ./dashboards/microsoft_wwi.lvdash.json
