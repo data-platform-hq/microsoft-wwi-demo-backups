@@ -10,6 +10,11 @@ permissions:
 workspace:
   root_path: /Shared/${workspace.current_user.userName}/${bundle.name}/${bundle.target}
 
+variables:
+  dashboard_warehouse_id:
+    type: string
+    lookup:
+      warehouse: "Serverless Starter Warehouse"
 
 # Do we need targets? Make sense to leave for future modifications
 targets:
@@ -94,3 +99,9 @@ resources:
             - whl: ${workspace.root_path}/artifacts/.internal/data_product_microsoft_wwi-1.6.0-py3-none-any.whl
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
+
+  dashboards:
+    microsoft_wwi:
+      display_name: "Microsoft WWI"
+      warehouse_id: ${var.dashboard_warehouse_id}
+      file_path: ./dashboards/microsoft_wwi.lvdash.json

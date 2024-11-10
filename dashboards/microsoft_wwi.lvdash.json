@@ -1,0 +1,436 @@
+{
+  "datasets": [
+    {
+      "displayName": "Untitled dataset",
+      "name": "619cf8a3",
+      "query": "SELECT\n    InvoiceDateKey AS order_date,\n    SUM(UnitPrice * Quantity) AS total_sales\nFROM\n    wwi_demo.02_data_product_microsoft_wwi.fact_sale\nGROUP BY\n    InvoiceDateKey\nORDER BY\n    InvoiceDateKey;"
+    },
+    {
+      "displayName": "best sold product",
+      "name": "bb5ef2c1",
+      "query": "SELECT\n    dsi.StockItem,\n    SUM(fs.Quantity) AS total_quantity_sold\nFROM\n    wwi_demo.02_data_product_microsoft_wwi.fact_sale fs\nJOIN\n    wwi_demo.02_data_product_microsoft_wwi.dimension_stockitem dsi\nON\n    fs.StockItemKey = dsi.StockItemKey\nGROUP BY\n    dsi.StockItem\nORDER BY\n    total_quantity_sold ASC\nLIMIT 10;"
+    },
+    {
+      "displayName": "locations",
+      "name": "5e2643ea",
+      "query": "SELECT\n    dc.City AS CityName,\n    dc.StateProvince AS State,\n    dc.Location AS Location,\n    dc.Latitude,\n    dc.Longitude,\n    SUM(fs.UnitPrice * fs.Quantity) AS total_sales\nFROM\n    wwi_demo.02_data_product_microsoft_wwi.fact_sale fs\nJOIN\n    wwi_demo.02_data_product_microsoft_wwi.dimension_city dc\nON\n    fs.CityKey = dc.CityKey\nGROUP BY\n    dc.City, dc.StateProvince, dc.Location, dc.Latitude, dc.Longitude\nORDER BY\n    total_sales DESC\nLimit 50;"
+    },
+    {
+      "displayName": "best employee",
+      "name": "9317538a",
+      "query": "WITH MonthlySales AS (\n    SELECT\n        DATE_FORMAT(fs.InvoiceDateKey, 'yyyy-MM') AS month,\n        e.Employee,\n        SUM(fs.UnitPrice * fs.Quantity) AS total_sales,\n        ROW_NUMBER() OVER (PARTITION BY DATE_FORMAT(fs.InvoiceDateKey, 'yyyy-MM') ORDER BY SUM(fs.UnitPrice * fs.Quantity) DESC) AS rank\n    FROM\n        wwi_demo.02_data_product_microsoft_wwi.fact_sale fs\n    JOIN\n        wwi_demo.02_data_product_microsoft_wwi.dimension_employee e\n    ON\n        fs.SalespersonKey = e.EmployeeKey\n    GROUP BY\n        month, e.Employee\n)\nSELECT\n    month,\n    Employee,\n    total_sales\nFROM\n    MonthlySales\nWHERE\n    rank = 1\nORDER BY\n    month;"
+    }
+  ],
+  "pages": [
+    {
+      "displayName": "Page 01",
+      "layout": [
+        {
+          "position": {
+            "height": 8,
+            "width": 6,
+            "x": 0,
+            "y": 0
+          },
+          "widget": {
+            "name": "0282dde0",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "619cf8a3",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "AVG(`total_sales`)",
+                      "name": "avg(total_sales)"
+                    },
+                    {
+                      "expression": "`total_sales`",
+                      "name": "total_sales"
+                    },
+                    {
+                      "expression": "DATE_TRUNC(\"MONTH\", `order_date`)",
+                      "name": "monthly(order_date)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "color": {
+                  "displayName": "Average total_sales",
+                  "fieldName": "avg(total_sales)",
+                  "scale": {
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "spectral"
+                    },
+                    "type": "quantitative"
+                  }
+                },
+                "x": {
+                  "displayName": "total_sales",
+                  "fieldName": "total_sales",
+                  "scale": {
+                    "reverse": false,
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "axis": {
+                    "hideLabels": false,
+                    "hideTitle": true
+                  },
+                  "displayName": "order_date",
+                  "fieldName": "monthly(order_date)",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total Sales per Month"
+              },
+              "version": 3,
+              "widgetType": "heatmap"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 7,
+            "width": 3,
+            "x": 0,
+            "y": 8
+          },
+          "widget": {
+            "name": "77a5ce74",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "5e2643ea",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "SUM(`total_sales`)",
+                      "name": "sum(total_sales)"
+                    },
+                    {
+                      "expression": "`Latitude`",
+                      "name": "Latitude"
+                    },
+                    {
+                      "expression": "`Longitude`",
+                      "name": "Longitude"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "color": {
+                  "displayName": "Sum of total_sales",
+                  "fieldName": "sum(total_sales)",
+                  "format": {
+                    "abbreviation": "compact",
+                    "currencyCode": "USD",
+                    "decimalPlaces": {
+                      "places": 2,
+                      "type": "max"
+                    },
+                    "type": "number-currency"
+                  },
+                  "scale": {
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "redyellowblue"
+                    },
+                    "reverse": true,
+                    "type": "quantitative"
+                  }
+                },
+                "coordinates": {
+                  "latitude": {
+                    "displayName": "Latitude",
+                    "fieldName": "Latitude"
+                  },
+                  "longitude": {
+                    "displayName": "Longitude",
+                    "fieldName": "Longitude"
+                  }
+                }
+              },
+              "frame": {
+                "showDescription": false,
+                "showTitle": true,
+                "title": "Top 25 Locations by Items Sold"
+              },
+              "mark": {
+                "colors": [
+                  "#00A972",
+                  "#FFAB00",
+                  "#00A972",
+                  "#FF3621",
+                  "#8BCAE7",
+                  "#AB4057",
+                  "#99DDB4",
+                  "#FCA4A1",
+                  "#919191",
+                  "#BF7080"
+                ]
+              },
+              "version": 2,
+              "widgetType": "symbol-map"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 7,
+            "width": 3,
+            "x": 3,
+            "y": 8
+          },
+          "widget": {
+            "name": "7fe7d950",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "bb5ef2c1",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "`StockItem`",
+                      "name": "StockItem"
+                    },
+                    {
+                      "expression": "SUM(`total_quantity_sold`)",
+                      "name": "sum(total_quantity_sold)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "label": {
+                  "show": true
+                },
+                "x": {
+                  "axis": {
+                    "hideLabels": false,
+                    "title": "Item Name"
+                  },
+                  "displayName": "Item Name",
+                  "fieldName": "StockItem",
+                  "scale": {
+                    "sort": {
+                      "by": "natural-order"
+                    },
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "axis": {
+                    "title": "Items Sold"
+                  },
+                  "displayName": "Items Sold",
+                  "fieldName": "sum(total_quantity_sold)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Top 10 Products Sold"
+              },
+              "mark": {
+                "colors": [
+                  "#077A9D",
+                  "#FFAB00",
+                  "#00A972",
+                  "#FF3621",
+                  "#8BCAE7",
+                  "#AB4057",
+                  "#99DDB4",
+                  "#FCA4A1",
+                  "#919191",
+                  "#BF7080"
+                ]
+              },
+              "version": 3,
+              "widgetType": "line"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 7,
+            "width": 6,
+            "x": 0,
+            "y": 15
+          },
+          "widget": {
+            "name": "4ca2f3cb",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9317538a",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "SUM(`total_sales`)",
+                      "name": "sum(total_sales)"
+                    },
+                    {
+                      "expression": "`Employee`",
+                      "name": "Employee"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "color": {
+                  "displayName": "Sum of total_sales",
+                  "fieldName": "sum(total_sales)",
+                  "scale": {
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "viridis"
+                    },
+                    "type": "quantitative"
+                  }
+                },
+                "x": {
+                  "displayName": "Employee",
+                  "fieldName": "Employee",
+                  "scale": {
+                    "sort": {
+                      "by": "y-reversed"
+                    },
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "axis": {
+                    "title": "Total Sales"
+                  },
+                  "displayName": "Total Sales",
+                  "fieldName": "sum(total_sales)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "The Best Employees by Total Sales"
+              },
+              "mark": {
+                "colors": [
+                  "#99DDB4",
+                  "#FFAB00",
+                  "#00A972",
+                  "#FF3621",
+                  "#8BCAE7",
+                  "#AB4057",
+                  "#99DDB4",
+                  "#FCA4A1",
+                  "#919191",
+                  "#BF7080"
+                ]
+              },
+              "version": 3,
+              "widgetType": "bar"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 7,
+            "width": 6,
+            "x": 0,
+            "y": 22
+          },
+          "widget": {
+            "name": "b857fb50",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9317538a",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "SUM(`total_sales`)",
+                      "name": "sum(total_sales)"
+                    },
+                    {
+                      "expression": "`month`",
+                      "name": "month"
+                    },
+                    {
+                      "expression": "`Employee`",
+                      "name": "Employee"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "color": {
+                  "displayName": "Total Sold that month",
+                  "fieldName": "sum(total_sales)",
+                  "scale": {
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "plasma"
+                    },
+                    "reverse": false,
+                    "type": "quantitative"
+                  }
+                },
+                "x": {
+                  "displayName": "month",
+                  "fieldName": "month",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "displayName": "Employee",
+                  "fieldName": "Employee",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Top performers each Month and Amount they sold that Month"
+              },
+              "mark": {
+                "opacity": 0.85,
+                "size": 3
+              },
+              "version": 3,
+              "widgetType": "scatter"
+            }
+          }
+        }
+      ],
+      "name": "14b4a4a3"
+    }
+  ]
+}
