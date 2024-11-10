@@ -1,0 +1,6 @@
+resources:
+  dashboards:
+    microsoft_wwi:
+      display_name: "Microsoft WWI"
+      warehouse_id: 346590a98076fe70
+      file_path: ../src/microsoft_wwi.lvdash.json

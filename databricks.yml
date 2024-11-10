@@ -94,3 +94,10 @@ resources:
             - whl: ${workspace.root_path}/artifacts/.internal/data_product_microsoft_wwi-1.6.0-py3-none-any.whl
             - maven:
                 coordinates: com.microsoft.azure:spark-mssql-connector_2.12:1.2.0
+
+  resources:
+    dashboards:
+      microsoft_wwi:
+        display_name: "Microsoft WWI2"
+        #warehouse_id: 346590a98076fe70
+        file_path: ../src/microsoft_wwi.lvdash.json
